@@ -1,72 +1,11 @@
 import { Tabs } from "expo-router";
-import React, { useRef, useEffect } from "react";
-import { Animated, Platform } from "react-native";
+import React from "react";
+import { Platform } from "react-native";
 import { ViewStyle } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol, IconSymbolName } from "@/components/ui/IconSymbol";
+import { IconSymbol } from "@/components/ui/IconSymbol"; // Giả sử bạn dùng IconSymbol cho icon
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-
-function AnimatedTabIcon({
-  name,
-  color,
-  focused,
-}: {
-  name: string;
-  color: string;
-  focused: boolean;
-}) {
-  const translateY = useRef(new Animated.Value(0)).current; // Initial position
-
-  useEffect(() => {
-    if (focused) {
-      // Move up
-      Animated.spring(translateY, {
-        toValue: -20,
-        friction: 4,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.spring(translateY, {
-        toValue: 0,
-        friction: 4,
-        useNativeDriver: true,
-      }).start();
-    }
-  }, [focused, translateY]);
-
-  return (
-    <Animated.View
-      style={{
-        transform: [{ translateY }],
-        width: 75,
-        height: 75,
-        borderRadius: 100,
-        backgroundColor: "#454e91",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-      }}
-    >
-      <Animated.View
-        style={{
-          backgroundColor: focused ? "#f021ff" : "",
-          borderRadius: 100,
-          width: 60,
-          height: 60,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <IconSymbol
-          size={focused ? 35 : 28}
-          name={name as IconSymbolName}
-          color={focused ? "#ffffff" : "#828cce"}
-        />
-      </Animated.View>
-    </Animated.View>
-  );
-}
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -81,7 +20,7 @@ export default function TabLayout() {
         tabBarStyle: Platform.select({
           ios: styles,
           android: styles,
-          default: styles,
+          default: {},
         }),
         headerStyle: {
           backgroundColor: "transparent", // Màu nền của header (nếu cần)
@@ -96,10 +35,9 @@ export default function TabLayout() {
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
-            <AnimatedTabIcon
-              name={"hand.wave" as string}
-              color={color}
-              focused={focused}
+            <IconSymbol
+              name="hand.wave"
+              color={focused ? Colors[colorScheme ?? "light"].tint : color}
             />
           ),
         }}
@@ -109,10 +47,9 @@ export default function TabLayout() {
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
-            <AnimatedTabIcon
-              name={"house.fill" as string}
-              color={color}
-              focused={focused}
+            <IconSymbol
+              name="house.fill"
+              color={focused ? Colors[colorScheme ?? "light"].tint : color}
             />
           ),
         }}
@@ -122,10 +59,9 @@ export default function TabLayout() {
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
-            <AnimatedTabIcon
-              name={"pin.square.fill" as string}
-              color={color}
-              focused={focused}
+            <IconSymbol
+              name="pin.square.fill"
+              color={focused ? Colors[colorScheme ?? "light"].tint : color}
             />
           ),
         }}
@@ -136,7 +72,6 @@ export default function TabLayout() {
 
 const styles: ViewStyle = {
   position: "absolute",
-  borderRadius: 20,
   marginLeft: "auto",
   marginRight: "auto",
   flexDirection: "row",
@@ -147,6 +82,5 @@ const styles: ViewStyle = {
   shadowColor: "#000",
   shadowOffset: { width: 4, height: 4 },
   shadowOpacity: 0.1,
-  shadowRadius: 5,
-  backgroundColor: "#454e91",
+  height: 100,
 };

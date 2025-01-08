@@ -1,110 +1,86 @@
+import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
-import { View, Text, FlatList, Image } from "react-native";
-import ActionComponents from "@/components/cardAction/ActionComponents";
-import CardCategory from "@/components/cardAction/CardCategory";
-import { icons } from "@/constants";
 
-const HomeScreen = () => {
-  const [fakeTodo] = useState([
-    { path: "/", title: "Tạo đề", img: icons.doquiz },
-    { path: "/", title: "Làm đề", img: icons.quiz },
-    { path: "/", title: "Kết quả", img: icons.result },
-    { path: "/", title: "Khám phá", img: icons.search },
-  ]);
-
-  const [fakeData] = useState([
-    { path: "/", title: "Tim de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
-    { path: "/", title: "Tim de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
-    { path: "/", title: "Tim de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
-    { path: "/", title: "Tim de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
-  ]);
-
-  console.log(icons.user);
-
-  const renderHeader = () => (
-    <View className=" bg-primary_200 px-6 pt-12 w-full">
-      <View className="flex-row justify-between w-full items-center">
-        <View className="flex-row">
-          <Image source={icons.user} className="w-12 h-12" />
-          <View className=" text-center flex-col justify-center ml-3">
-            <Text className="text-white">Nguyễn Văn A</Text>
-            <Text className="text-white text-[10px] ">Tài khoản thường</Text>
-          </View>
-        </View>
-        <View className="flex-row items-center gap-1">
-          <Text className="text-yellow-400 font-bold">0</Text>
-          <Image source={icons.point} className="w-8 h-8 " />
-        </View>
-      </View>
-      <Text className="text-white text-[10px] py-5 ">
-        Welcome back, My student,What will you do today !!
-      </Text>
-    </View>
-  );
-
-  const renderActionSection = () => (
-    <>
-      <Text className="text-white my-5">Hành động</Text>
-      <FlatList
-        data={fakeTodo}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View className="w-[48%] mb-4">
-            <ActionComponents
-              img={item.img}
-              title={item.title}
-              path={item.path}
-            />
-          </View>
-        )}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-      />
-    </>
-  );
-
-  const renderCategorySection = () => (
-    <>
-      <Text className="text-white  my-5">Danh mục</Text>
-      <FlatList
-        data={fakeData}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View className="w-[23%] mb-4 ">
-            <CardCategory img={item.img} title={item.title} path={item.path} />
-          </View>
-        )}
-        numColumns={4}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-      />
-    </>
-  );
+export default function App() {
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
-    <FlatList
-      className="h-screen bg-primary_200 "
-      data={[]}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={null}
-      ListHeaderComponent={
-        <View className="">
-          {renderHeader()}
-          <View className="p-6 ">
-            {renderActionSection()}
-            {renderCategorySection()}
-          </View>
-        </View>
-      }
-      contentContainerStyle={{
-        backgroundColor: "#2a3164",
-        flexGrow: 1,
-      }}
-    />
+    <View style={styles.container}>
+      <Text style={styles.title}>Đăng nhập</Text>
+      <Text style={styles.label}>Nhập số điện thoại</Text>
+      <Text style={styles.description}>
+        Dùng số điện thoại để đăng nhập hoặc đăng ký tài khoản tại OneHousing
+      </Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Nhập số điện thoại của bạn"
+        keyboardType="phone-pad"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
+      />
+      <TouchableOpacity
+        style={[styles.button, phoneNumber ? styles.buttonActive : null]}
+        onPress={() => {}}
+      >
+        <Text style={styles.buttonText}>Tiếp tục</Text>
+      </TouchableOpacity>
+      <StatusBar style="auto" />
+    </View>
   );
-};
+}
 
-export default HomeScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "left",
+    justifyContent: "center",
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 16,
+    //textShadowColor: 'rgba(0, 0, 0, 0.75)', // Thêm shadow dưới chữ "Đăng nhập"
+    //textShadowOffset: { width: 0, height: 2 },
+    //textShadowRadius: 3,
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 16,
+    textAlign: "left",
+  },
+  input: {
+    height: 40,
+    borderBottomColor: "gray",
+    borderBottomWidth: 1,
+    width: "100%",
+    paddingHorizontal: 8,
+    marginBottom: 16,
+  },
+  button: {
+    backgroundColor: "lightgray", // Màu nền của nút "Tiếp tục" mờ hơn
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonActive: {
+    backgroundColor: "green", // Màu nền của nút "Tiếp tục" khi điền số điện thoại
+  },
+  buttonText: {
+    color: "#fff", // Màu chữ button trắng
+    fontSize: 16,
+  },
+});
