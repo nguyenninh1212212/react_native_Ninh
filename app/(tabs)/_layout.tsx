@@ -31,19 +31,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="Home/index2"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => (
-            <IconSymbol
-              name="hand.wave"
-              color={focused ? Colors[colorScheme ?? "light"].tint : color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="index"
+        name="Home/Bai1Buoi3"
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
@@ -55,12 +43,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="Home/index3"
+        name="Home/Bai2Buoi3"
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              name="pin.square.fill"
+              name="house.fill"
               color={focused ? Colors[colorScheme ?? "light"].tint : color}
             />
           ),

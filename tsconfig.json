@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "components/cardAction/ButtonCustom.tsx", "app/(tabs)/Home/Bai1Buoi3.tsx", "app/(tabs)/Home/Bai2Buoi3.tsx", "app/(tabs)/_layout.tsx"  ]
 }
