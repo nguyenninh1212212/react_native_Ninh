@@ -15,13 +15,10 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
+
         headerTransparent: false,
         tabBarButton: HapticTab,
-        tabBarStyle: Platform.select({
-          ios: styles,
-          android: styles,
-          default: {},
-        }),
+        tabBarStyle: { display: "none" },
         headerStyle: {
           backgroundColor: "transparent", // Màu nền của header (nếu cần)
           height: 0, // Điều chỉnh chiều cao header (mặc định thường khoảng 56px)
@@ -29,32 +26,7 @@ export default function TabLayout() {
           paddingTop: 0, // Loại bỏ padding trên header
         },
       }}
-    >
-      <Tabs.Screen
-        name="Home/Bai1Buoi3"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => (
-            <IconSymbol
-              name="house.fill"
-              color={focused ? Colors[colorScheme ?? "light"].tint : color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="Home/Bai2Buoi3"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, focused }) => (
-            <IconSymbol
-              name="house.fill"
-              color={focused ? Colors[colorScheme ?? "light"].tint : color}
-            />
-          ),
-        }}
-      />
-    </Tabs>
+    ></Tabs>
   );
 }
 
