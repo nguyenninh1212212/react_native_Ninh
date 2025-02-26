@@ -2,7 +2,7 @@ import CardTitle from "@/components/cardAction/CardTitle";
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, FlatList } from "react-native";
 
-const Buoi5 = () => {
+const Bai3 = () => {
   const data = [
     { text: "Green", background: "green", color: "white" },
     { text: "Blue", background: "blue", color: "white" },
@@ -14,8 +14,8 @@ const Buoi5 = () => {
 
   const [bg, setBg] = useState<string>("");
   return (
-    <SafeAreaView>
-      <View style={{ backgroundColor: bg, height: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: bg }}>
+      <View>
         <FlatList
           data={data}
           renderItem={({ item }) => (
@@ -32,4 +32,4 @@ const Buoi5 = () => {
   );
 };
 
-export default Buoi5;
+export default Bai3;
