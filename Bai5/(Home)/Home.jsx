@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, FlatList } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 const Home = () => {
   const data = [
@@ -12,7 +13,7 @@ const Home = () => {
     { text: "Black", background: "black", color: "white" },
   ];
 
-  const [bg, setBg] = useState<string>("");
+  const [bg, setBg] = useState("");
   return (
     <SafeAreaView style={{ backgroundColor: bg }}>
       <View>
