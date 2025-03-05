@@ -1,7 +1,5 @@
-
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from "react-native"; // ✅ Import đúng
 
 const Home = () => {
   const data = [
@@ -13,25 +11,27 @@ const Home = () => {
     { text: "Black", background: "black", color: "white" },
   ];
 
-  const [bg, setBg] = useState("");
+  const [bg, setBg] = useState(""); // ✅ Sửa lỗi
+
   return (
-    <SafeAreaView style={{ backgroundColor: bg }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: bg, justifyContent: "center" }}>
       <View>
         <FlatList
           data={data}
+          keyExtractor={(item) => item.text} // ✅ Thêm key tránh lỗi React
           renderItem={({ item }) => (
-             <TouchableOpacity onPress={() => setBg(item.background)}>
-                  <View
-                    style={{
-                      backgroundColor: item.background,
-                      padding: 10,
-                      margin: 5,
-                      borderRadius: 5,
-                    }}
-                  >
-                    <Text style={{ color: item.color, textAlign: "center" }}>{item.text}</Text>
-                  </View>
-                </TouchableOpacity>
+            <TouchableOpacity onPress={() => setBg(item.background)}>
+              <View
+                style={{
+                  backgroundColor: item.background,
+                  padding: 10,
+                  margin: 5,
+                  borderRadius: 5,
+                }}
+              >
+                <Text style={{ color: item.color, textAlign: "center" }}>{item.text}</Text>
+              </View>
+            </TouchableOpacity>
           )}
         />
       </View>
