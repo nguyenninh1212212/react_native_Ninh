@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/b1a61952-55ed-4214-9b25-538492f17a4d)Nguyễn An Ninh
+Nguyễn An Ninh
 22810310288
 D17CNPM4
 
@@ -11,4 +11,4 @@ D17CNPM4
 ![image](https://github.com/user-attachments/assets/3f9fe435-264b-4ec6-b441-2f49fa193755)
 ![image](https://github.com/user-attachments/assets/db2a88d0-459d-4f29-a477-d13470ace68a)
 ![image](https://github.com/user-attachments/assets/60fac645-8bce-4b36-945d-ce9d677c0e39)
-
+![image](https://github.com/user-attachments/assets/b1a61952-55ed-4214-9b25-538492f17a4d)
